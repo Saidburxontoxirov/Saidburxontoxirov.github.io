@@ -3,7 +3,7 @@ const ruButton = document.querySelector("#btn-ru");
 const uz = document.querySelector("#text-uz");
 const rus = document.querySelector("#text-ru");
 const bufferCyrillic = document.querySelector("#bufferCyrillic");
-const bufferUzbek = document.querySelector("#bufferUzbek");
+const bufferLatin = document.querySelector("#bufferLatin");
 const wordCount = document.querySelector("#word-count");
 
 const cyrillicWords = {
@@ -20,7 +20,7 @@ const cyrillicWords = {
     "Х": "X",
     "Ъ": "",
     "ё": "yo",
-    "й": "i",
+    "й": "y",
     "ц": "s",
     "у": "u",
     "к": "k",
@@ -79,28 +79,9 @@ const cyrillicWords = {
     'ҳ': "h",
     'Ғ': "G'",
     'Ҳ': "H",
-    "ы": "i"
+    "ы": ""
 };
 
-
-const beforeLatinWords ={
-    "Yo": "Ё",
-    "Sh": "Ш",
-    "Ts": "Ц",
-    "sh": "ш",
-    "Ya": "Я",
-    "Ch": "Ч",
-    "ts": "ц",
-    "yo": "ё",
-    "Yu": "Ю",
-    "ya": "я",
-    "ch": "ч",
-    "G'": 'Ғ',
-    "yu": "ю",
-    "o'": 'ў',
-    "O'": 'Ў',
-    "g'": 'ғ'
-}
 const latinWords = {
     "Y": "Й",
     "U": "У",
@@ -155,6 +136,26 @@ const latinWords = {
     "H": 'Ҳ',
 };
 
+function latinToCyrillicConverter(chars) {
+    let newChars = chars.replace(/Yo/g, 'Ё');
+    newChars = newChars.replace(/Sh/g, 'Ш');
+    newChars = newChars.replace(/Ts/g, 'Ё');
+    newChars = newChars.replace(/Yo/g, 'Ц');
+    newChars = newChars.replace(/sh/g, 'ш');
+    newChars = newChars.replace(/Ya/g, 'Я');
+    newChars = newChars.replace(/Ch/g, 'Ч');
+    newChars = newChars.replace(/ts/g, 'ц');
+    newChars = newChars.replace(/Yu/g, 'Ю');
+    newChars = newChars.replace(/ya/g, 'я');
+    newChars = newChars.replace(/ch/g, 'ч');
+    newChars = newChars.replace(/G'/g, 'Ғ');
+    newChars = newChars.replace(/yu/g, 'ю');
+    newChars = newChars.replace(/o'/g, 'ў');
+    newChars = newChars.replace(/O'/g, 'Ў');
+    newChars = newChars.replace(/g'/g, 'ғ');
+    return newChars;
+}
+
 function translateCyrillicToLatin(word) {
     return word.split('').map(function (char) {
         if (char != "ь") {
@@ -170,14 +171,13 @@ function translatePairWords(word) {
 }
 
 function beforeTranslate(word) {
-    let words = translatePairWords(word);
-    return translateLatinToCyrillic(words);
+    return latinToCyrillicConverter(word);
 }
 
 
 function translateLatinToCyrillic(word) {
     return word.split('').map(function (char) {
-            return latinWords[char] || char;
+        return latinWords[char] || char;
     }).join("");
 }
 
@@ -186,7 +186,8 @@ uz.addEventListener("keyup", function (event) {
     const wordLength = letters.length;
     wordCount.textContent = wordLength;
     const rusConverterWords = beforeTranslate(letters);
-    rus.value = rusConverterWords;
+    let words = translateLatinToCyrillic(rusConverterWords);
+    rus.value = translateLatinToCyrillic(words);
 });
 
 rus.addEventListener("keyup", function (event) {
@@ -218,10 +219,10 @@ ruButton.addEventListener("click", function (e) {
 
 bufferCyrillic.addEventListener("click", function (e) {
     bufferCyrillic.textContent = "Copied";
-    bufferUzbek.textContent = "Copy";
+    bufferLatin.textContent = "Copy";
 });
 
-bufferUzbek.addEventListener("click", function (e) {
-    bufferUzbek.textContent = "Copied";
+bufferLatin.addEventListener("click", function (e) {
+    bufferLatin.textContent = "Copied";
     bufferCyrillic.textContent = "Copy";
 });
