@@ -167,7 +167,7 @@ function translateCyrillicToLatin(word) {
 function translatePairWords(word) {
     return word.split(' ').map(function (char) {
         return beforeLatinWords[char] || char;
-    }).join(' ');    
+    }).join(' ');
 }
 
 function beforeTranslate(word) {
@@ -218,13 +218,18 @@ ruButton.addEventListener("click", function (e) {
 });
 
 bufferCyrillic.addEventListener("click", function (e) {
+    document.getElementById("text-ru").select();
+    document.execCommand('copy');
     bufferCyrillic.textContent = "Copied";
     bufferLatin.textContent = "Copy";
 });
 
 bufferLatin.addEventListener("click", function (e) {
+    document.getElementById("text-uz").select();
+    document.execCommand('copy');
     bufferLatin.textContent = "Copied";
     bufferCyrillic.textContent = "Copy";
 });
+
 
 // end
