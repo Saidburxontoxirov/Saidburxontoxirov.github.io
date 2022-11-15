@@ -196,7 +196,7 @@ rus.addEventListener("keyup", function (event) {
 });
 
 uzButton.addEventListener("click", function (e) {
-    rus.focus();
+    uz.focus();
     ruButton.style["background-color"] = "#fff";
     ruButton.style["color"] = "#0d6efd";
     uzButton.style["background-color"] = "#0d6efd";
@@ -206,7 +206,7 @@ uzButton.addEventListener("click", function (e) {
 ruButton.addEventListener("click", function (e) {
     uzButton.style["background-color"] = "#fff";
     uzButton.style["color"] = "#0d6efd";
-    uz.focus();
+    ru.focus();
     ruButton.style["background-color"] = "#0d6efd";
     ruButton.style["color"] = "#fff";
 });
