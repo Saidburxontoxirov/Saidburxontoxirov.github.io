@@ -226,3 +226,5 @@ bufferLatin.addEventListener("click", function (e) {
     bufferLatin.textContent = "Copied";
     bufferCyrillic.textContent = "Copy";
 });
+
+// end
