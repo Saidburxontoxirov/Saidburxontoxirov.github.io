@@ -196,23 +196,17 @@ rus.addEventListener("keyup", function (event) {
 });
 
 uzButton.addEventListener("click", function (e) {
-    console.log(e.target.value)
+    rus.focus();
     ruButton.style["background-color"] = "#fff";
     ruButton.style["color"] = "#0d6efd";
-    uz.focus();
     uzButton.style["background-color"] = "#0d6efd";
     uzButton.style["color"] = "#fff";
-
-
 });
 
 ruButton.addEventListener("click", function (e) {
-    console.log(e.target.value)
     uzButton.style["background-color"] = "#fff";
     uzButton.style["color"] = "#0d6efd";
-    if (rus) {
-        rus.focus();
-    }
+    uz.focus();
     ruButton.style["background-color"] = "#0d6efd";
     ruButton.style["color"] = "#fff";
 });
@@ -230,6 +224,3 @@ bufferLatin.addEventListener("click", function (e) {
     bufferLatin.textContent = "Copied";
     bufferCyrillic.textContent = "Copy";
 });
-
-
-// end
