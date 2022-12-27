@@ -139,19 +139,25 @@ const latinWords = {
 function latinToCyrillicConverter(chars) {
     let newChars = chars.replace(/Yo/g, 'Ё');
     newChars = newChars.replace(/Sh/g, 'Ш');
-    newChars = newChars.replace(/Ts/g, 'Ё');
-    newChars = newChars.replace(/Yo/g, 'Ц');
+    newChars = newChars.replace(/SH/g, 'Ш');
+    newChars = newChars.replace(/Yo/g, 'Ё');
+    newChars = newChars.replace(/Ts/g, 'Ц');
     newChars = newChars.replace(/sh/g, 'ш');
     newChars = newChars.replace(/Ya/g, 'Я');
     newChars = newChars.replace(/Ch/g, 'Ч');
+    newChars = newChars.replace(/CH/g, 'Ч');
     newChars = newChars.replace(/ts/g, 'ц');
     newChars = newChars.replace(/Yu/g, 'Ю');
     newChars = newChars.replace(/ya/g, 'я');
     newChars = newChars.replace(/ch/g, 'ч');
     newChars = newChars.replace(/G'/g, 'Ғ');
+    newChars = newChars.replace(/Gʻ/g, 'Ғ');
     newChars = newChars.replace(/yu/g, 'ю');
+    newChars = newChars.replace(/oʻ/g, 'ў');
     newChars = newChars.replace(/o'/g, 'ў');
+    newChars = newChars.replace(/Oʻ/g, 'Ў');
     newChars = newChars.replace(/O'/g, 'Ў');
+    newChars = newChars.replace(/gʻ/g, 'ғ');
     newChars = newChars.replace(/g'/g, 'ғ');
     return newChars;
 }
