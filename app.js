@@ -134,6 +134,7 @@ const latinWords = {
     "Q": 'Қ',
     "h": 'ҳ',
     "H": 'Ҳ',
+    "y": "й",
 };
 
 function latinToCyrillicConverter(chars) {
